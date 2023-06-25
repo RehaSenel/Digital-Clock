@@ -1,0 +1,131 @@
+:root {
+  --color-purple-1: rgba(179, 0, 255, 1) 0%;
+  --color-purple-2: rgba(149, 0, 255, 0.8968837535014006);
+
+  --color-pink-1: #dc00fe;
+
+  --color-blue-1: #00c0f9;
+  --color-blue-2: #5319fb;
+  --color-blue-3: #1b02a3;
+
+  --color-red-1: rgba(255, 29, 0, 0.8968837535014006) 0%;
+
+  --color-orange-1: rgba(255, 165, 0, 0.8940826330532213) 100%;
+}
+
+/* ====================================================================== */
+
+*,
+*::after,
+*::before {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  height: 100vh;
+  width: 100%;
+  background-color: #222;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.clock-container {
+  position: relative;
+  border-radius: 5px;
+  background-color: #333;
+  width: 60%;
+  max-width: 500px;
+  max-height: 150px;
+  aspect-ratio: 2/1;
+  display: grid;
+  grid-template-areas:
+    ". . ."
+    ". time ."
+    ". . .";
+  grid-template-rows: 10% 80% 10%;
+  grid-template-columns: 5% 1fr 5%;
+  align-items: center;
+}
+
+.clock-container::before {
+  content: "";
+  position: absolute;
+  background-color: var(--color-purple-2);
+  z-index: -100;
+  top: 0;
+  right: 0;
+  filter: blur(15px);
+  width: 100%;
+  height: 100%;
+  transform: translateY(-10%);
+}
+
+.clock-container::after {
+  content: "";
+  position: absolute;
+  background-color: var(--color-blue-2);
+  z-index: -100;
+  top: 0;
+  left: 0;
+  filter: blur(15px);
+  width: 100%;
+  height: 100%;
+  transform: translateY(10%);
+}
+
+.time-container {
+  position: relative;
+  grid-area: time;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.hour,
+.minute,
+.second,
+.colon {
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 3.5em;
+  font-family: Orbitron;
+  padding: 0 5px;
+}
+
+.hour {
+  background: -webkit-linear-gradient(
+    90deg,
+    var(--color-red-1),
+    var(--color-orange-1)
+  );
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.minute {
+  background: -webkit-linear-gradient(
+    90deg,
+    var(--color-blue-1),
+    var(--color-orange-1)
+  );
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.second {
+  background: -webkit-linear-gradient(
+    90deg,
+    var(--color-pink-1),
+    var(--color-blue-1)
+  );
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
