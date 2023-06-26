@@ -26,7 +26,9 @@
 body {
   height: 100vh;
   width: 100%;
+
   background-color: #222;
+
   display: flex;
   align-items: center;
   justify-content: center;
@@ -34,51 +36,68 @@ body {
 
 .clock-container {
   position: relative;
-  border-radius: 5px;
+  border-radius: 15px;
   background-color: #333;
+
   width: 60%;
   max-width: 500px;
   max-height: 150px;
-  aspect-ratio: 2/1;
+  aspect-ratio: 4/1;
+
   display: grid;
+  align-items: center;
+
   grid-template-areas:
+  /* . ---> empty space */
+  /* time ---> time container */
     ". . ."
     ". time ."
     ". . .";
   grid-template-rows: 10% 80% 10%;
   grid-template-columns: 5% 1fr 5%;
-  align-items: center;
 }
 
 .clock-container::before {
   content: "";
   position: absolute;
-  background-color: var(--color-purple-2);
   z-index: -100;
+
   top: 0;
   right: 0;
-  filter: blur(15px);
   width: 100%;
   height: 100%;
   transform: translateY(-10%);
+
+  background-color: var(--color-purple-2);
+  filter: blur(15px);
 }
 
 .clock-container::after {
   content: "";
   position: absolute;
-  background-color: var(--color-blue-2);
   z-index: -100;
+
   top: 0;
   left: 0;
   filter: blur(15px);
   width: 100%;
   height: 100%;
   transform: translateY(10%);
+
+  background-color: var(--color-blue-2);
 }
 
 .time-container {
-  position: relative;
   grid-area: time;
+
+  position: relative;
+}
+
+.time-container,
+.hour,
+.minute,
+.second,
+.colon {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -89,12 +108,10 @@ body {
 .second,
 .colon {
   color: white;
-  display: flex;
-  align-items: center;
-  justify-content: center;
   font-size: 3.5em;
   font-family: Orbitron;
   padding: 0 5px;
+  font-weight: bold;
 }
 
 .hour {
@@ -128,4 +145,46 @@ body {
   background-clip: text;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
+}
+
+@media screen and (max-width: 620px) {
+  .clock-container {
+    width: 65%;
+    aspect-ratio: 4/1;
+  }
+
+  .hour,
+  .minute,
+  .second,
+  .colon {
+    font-size: 3em;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .clock-container {
+    width: 65%;
+    aspect-ratio: 4/1;
+  }
+
+  .hour,
+  .minute,
+  .second,
+  .colon {
+    font-size: 2.25em;
+  }
+}
+
+@media screen and (max-width: 360px) {
+  .clock-container {
+    width: 70%;
+    aspect-ratio: 4/1;
+  }
+
+  .hour,
+  .minute,
+  .second,
+  .colon {
+    font-size: 1.75em;
+  }
 }
