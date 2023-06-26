@@ -16,11 +16,13 @@ function getTime() {
   hour.innerText = h < 10 ? "0" + h : h;
   minute.innerText = m < 10 ? "0" + m : m;
   second.innerText = s < 10 ? "0" + s : s;
+
+  // Executes getTime again after 1 second
+  setTimeout(getTime, 1000);
 }
 
+// Invoking getTime() to get the time when the page loads
 getTime();
-
-setInterval(getTime, 1000);
 
 function timeChecker(t, n) {
   if ((t = "second")) {
